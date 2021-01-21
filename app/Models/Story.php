@@ -12,7 +12,11 @@ class Story extends Model
     protected $fillable = [
         'title',
         'genre',
-        'description',
+        'blurb',
         'story-flow'
+    ];
+
+    protected $casts = [
+        'genre'=>'array'
     ];
 }

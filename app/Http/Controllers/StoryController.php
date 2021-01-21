@@ -15,19 +15,19 @@ class StoryController extends Controller
         try{
             $request->validate([
                 'title'=>'required',
-                'genre'=>'required',
-                'description'=>'required',
+                'genre.*'=>'required',
+                'blurb'=>'required',
                 'storyFlow'=>'required'
             ]);
 
-            Story::create([
+            $story = Story::create([
                 'title'=>$request->title,
                 'genre'=>$request->genre,
-                'description'=>$request->description,
+                'blurb'=>$request->blurb,
                 'story-flow'=>$request->storyFlow
             ]);
             DB::commit();
-            return response()->json('story created');
+            return response()->json($story);
         }
         catch(Exception $e){
             DB::rollBack();

@@ -17,8 +17,8 @@ class CreateStoriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->json('genre');
-            $table->string('description');
-            $table->string('story-flow');
+            $table->string('blurb');
+            $table->text('story-flow');
             $table->timestamps();
         });
     }
