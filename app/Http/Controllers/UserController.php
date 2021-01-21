@@ -12,9 +12,10 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index_register()
+    public function register_home()
     {
-        return view('registration-form');
+        //return view file with route register
+    
     }
 
     public function register(Request $request)
@@ -42,7 +43,7 @@ class UserController extends Controller
 
             /* TO BE USE */
             if(!is_null($user)) {
-                return redirect()->route('home')->with("success", "Success! Registration completed");
+                return redirect()->route('login');
             }
 
             else {
@@ -56,9 +57,9 @@ class UserController extends Controller
         }
     }
 
-    public function index_login()
+    public function login_form()
     {
-       return view('login-form');
+       // return view file with route login
     }
     public function login(Request $request)
     {
@@ -83,5 +84,12 @@ class UserController extends Controller
         ];
         return redirect()->intended('home');
                     
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerate();
+        return redirect()->route('home')-with(['message'=>'See you next time']);
     }
 }

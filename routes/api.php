@@ -21,8 +21,19 @@ use App\Http\Controllers\AdminAuth;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/users/login', [UserController::class, 'login']);
+//user register routes
+Route::get('register', [UserController::class, 'register_home']);
 Route::post('register',[UserController::class,'register']);
+
+//user log in routes
+Route::get('login', [UserController::class, 'login_form']);
+Route::post('login', [UserController::class, 'login']);
+
+//logout routes
+Route::post('logout', [UserController::class, 'logout']);
+
+//create story routes
 Route::post('add_story', [StoryController::class, 'storeStory']);
+//search routes
 Route::get('search/{title}',[StoryController::class, 'searchStory']);
 Route::get('search/{title}',[SearchController::class,'search']);
