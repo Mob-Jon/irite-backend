@@ -81,8 +81,6 @@ class UserController extends Controller
             "token" => $token,
             "user" => $user
         ];
-
-        // return response($response, 200);
         return redirect()->intended('home');
                     
     }
