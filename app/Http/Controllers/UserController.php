@@ -35,6 +35,7 @@ class UserController extends Controller
                     'date-of-birth'=>$request->dateOfBirth,
                     'email'=>$request->email,
                     'password'=>Hash::make($request->password),
+                    'usertype'=>"user"
                 ]);
             DB::commit();
             return response()->json($user);
@@ -61,23 +62,26 @@ class UserController extends Controller
     }
     public function login(Request $request)
     {
-            $request->validate([
-                'email'=>'required',
-                'password'=>'required'
-            ]);
-            $credentials = $request->only('email','password');
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+        $credentials = $request->only('email','password');
+        
+        $user = User::where('email', $credentials["email"])->first();
+        if(!$user || !Hash::check($credentials["password"], $user->password)) {
+            return [
+                "This credential doesn't match!"
+            ];
+        } 
 
-            if (Auth::attempt($credentials)) {
-                Auth::user()->createToken('access_token')->plainTextToken;
-                //TO BE USE
-                // return redirect()->intended('home');
-                return response()->json('successful login');
-            }
-            // TO BE USE
-            // return back()->withErrors([
-            //     'errors' => 'The provided credentials do not match our records.'
-            // ]);
-            return response()->json('failed to log in');
+        $token = $user->createToken("access_token")->plainTextToken;
+
+        $response = [
+            "token" => $token,
+            "user" => $user
+        ];
+        return redirect()->intended('home');
                     
     }
 }
