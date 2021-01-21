@@ -27,11 +27,17 @@ class StoryController extends Controller
                 'story-flow'=>$request->storyFlow
             ]);
             DB::commit();
+            // return redirect()->route('myStories');
             return response()->json($story);
         }
         catch(Exception $e){
             DB::rollBack();
-            return response()->json('failed to create story');
+            // return response()->json('failed to create story');
+            return redirect()->back();
         }
+    }
+    public function searchStory($title)
+    {
+        return Story::where('title','like','%'.$title.'%')->get();
     }
 }
