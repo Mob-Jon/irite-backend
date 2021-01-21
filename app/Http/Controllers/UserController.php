@@ -26,7 +26,7 @@ class UserController extends Controller
                 'username' =>'required',
                 'dateOfBirth' =>'required',
                 'email'=>'required|email',
-                'password'=>'required|min:8|max:12',
+                'password'=>'required|min:8|max:12|confirmed',
                 
             ]);
             $user = 
