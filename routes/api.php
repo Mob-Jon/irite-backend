@@ -30,7 +30,7 @@ Route::get('login', [UserController::class, 'login_form']);
 Route::post('login', [UserController::class, 'login']);
 
 //logout routes
-Route::post('logout', [UserController::class, 'logout']);
+Route::post('logout/{user}', [UserController::class, 'logout']);
 
 //create story routes
 Route::post('add_story', [StoryController::class, 'storeStory']);

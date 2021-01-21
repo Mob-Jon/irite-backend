@@ -12,12 +12,13 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    // Get register form
     public function register_home()
     {
         //return view file with route register
     
     }
-
+    // Register
     public function register(Request $request)
     {
         DB::beginTransaction();
@@ -39,28 +40,19 @@ class UserController extends Controller
                     'usertype'=>"user"
                 ]);
             DB::commit();
-            return response()->json($user);
-
-            /* TO BE USE */
-            if(!is_null($user)) {
-                return redirect()->route('login');
-            }
-
-            else {
-                return back()->withErrors($user);
-            }
-        
-            
+            return response()->json($user);    
+           
         }catch(Exception $e){
             DB::rollBack();
             return $e;
         }
     }
-
+    // Get log in form
     public function login_form()
     {
        // return view file with route login
     }
+    // Log in
     public function login(Request $request)
     {
         $request->validate([
@@ -82,14 +74,13 @@ class UserController extends Controller
             "token" => $token,
             "user" => $user
         ];
-        return redirect()->intended('home');
+        return response()->json($response);
                     
     }
-    public function logout(Request $request)
+    // log out
+    public function logout(User $user)
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerate();
-        return redirect()->route('home')-with(['message'=>'See you next time']);
+        $user->tokens()->delete();
+        return response()->json('user logout');
     }
 }
