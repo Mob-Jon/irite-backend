@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         return view('registration-form');
     }
-
+    //function to register
     public function register(Request $request)
     {
         DB::beginTransaction();
@@ -24,18 +24,59 @@ class UserController extends Controller
         try{
             $validate = $request->validate([
                 'username' =>'required',
-                'dateOfBirth' =>'required',
+                'dateOfBirth' =>'required|date|before:18 years ago',
                 'email'=>'required|email',
                 'password'=>'required|min:8|max:12',
                 
+            ],
+            [
+                'dateOfBirth.before' => 'You must be atleast 18 years old.'
             ]);
-            $user = 
-                User::create([
+
+            $user = User::create([
                     'username'=>$request->username,
                     'date-of-birth'=>$request->dateOfBirth,
                     'email'=>$request->email,
                     'password'=>Hash::make($request->password),
                     'usertype'=>"user"
+                ]);
+            DB::commit();
+
+            return response()->json($user);
+
+            /* TO BE USE */
+            if(!is_null($user)) {
+                return redirect()->route('home')->with("success", "Success! Registration completed");
+            }
+
+            else {
+                return back()->withErrors($user);
+            }
+        
+            
+        }catch(Exception $e){
+            DB::rollBack();
+            return $e;
+        }
+    }
+    //function for admin side
+    public function adminRegister(Request $request)
+    {
+        DB::beginTransaction();
+
+        try{
+            $validate = $request->validate([
+                'username' =>'required',
+                'email'=>'required|email',
+                'password'=>'required|min:8|max:12',
+                     
+            ]);
+            $user = 
+                User::create([
+                    'username'=>$request->username,
+                    'email'=>$request->email,
+                    'password'=>Hash::make($request->password),
+                    'usertype'=>"admin"
                 ]);
             DB::commit();
             return response()->json($user);
@@ -55,6 +96,9 @@ class UserController extends Controller
             return $e;
         }
     }
+
+
+
 
     public function index_login()
     {

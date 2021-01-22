@@ -21,6 +21,11 @@ class CreateStoriesTable extends Migration
             $table->text('story-flow');
             $table->timestamps();
         });
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
     }
 
     /**

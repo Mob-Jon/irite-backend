@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Books;
+use Illuminate\Database\Eloquent\Collection;
+// use App\Models\Books;
+use App\Models\Story;
 
 class HomeController extends Controller
 {
@@ -14,8 +16,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Books::all()->latest()->take(10);
+        // Books::all()->latest()->take(10);
+        // Story::take(10)->get();
+        $story = DB::table('stories')
+                    ->orderBy('id', 'desc')
+                    ->groupBy('genre')
+                    ->get();
+
+        $story = DB::table('stories')->skip(0)->take(2)->get();
+        return response()->json($story);
     }
+
 
     /**
      * Show the form for creating a new resource.
