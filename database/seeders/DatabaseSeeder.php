@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         \App\Models\User::create([
             'username'=>'admin',
-            'date-of-birth'=> now(),
+            'date-of-birth'=>now(),
             'email'=> 'admin@admin.com',
             'password'=>Hash::make('password'),
             'usertype'=>"admin"

@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Books::all()->latest()->take(10);
+        
     }
 
     /**

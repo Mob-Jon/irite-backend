@@ -18,6 +18,7 @@ class UserController extends Controller
         //return view file with route register
     
     }
+
     // Register
     public function register(Request $request)
     {
@@ -47,11 +48,14 @@ class UserController extends Controller
             return $e;
         }
     }
+
     // Get log in form
     public function login_form()
     {
        // return view file with route login
+       return response()->json('log in form');
     }
+
     // Log in
     public function login(Request $request)
     {
@@ -59,12 +63,14 @@ class UserController extends Controller
             'email'=>'required',
             'password'=>'required'
         ]);
+
         $credentials = $request->only('email','password');
         
         $user = User::where('email', $credentials["email"])->first();
         if(!$user || !Hash::check($credentials["password"], $user->password)) {
+
             return [
-                "This credential doesn't match!"
+                "This credentials don't match!"
             ];
         } 
 
@@ -74,13 +80,24 @@ class UserController extends Controller
             "token" => $token,
             "user" => $user
         ];
-        return response()->json($response);
+
+        if ($user->usertype == 'admin') {
+            // return view file for admin (dashbord)
+            return response()->json($response);
+        }
+        else{
+            // return view file for normal user
+            return response()->json($response);
+        }
+        
                     
     }
+
     // log out
     public function logout(User $user)
     {
         $user->tokens()->delete();
+        
         return response()->json('user logout');
     }
 }

@@ -12,6 +12,10 @@ class SearchController extends Controller
         // return response()->json($title);
         return Story::where("title","like","%".$title."%")->get();
 
-
     }
+
+    public function filter_genre($genre){
+        
+    }
+
 }

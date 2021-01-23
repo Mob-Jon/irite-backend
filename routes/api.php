@@ -2,10 +2,15 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// CUSTOMIZE CONTROLLERS
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\AdminAuth;
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\PublishedStoryController;
+use App\Http\Controllers\user\UserLibraryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +26,8 @@ use App\Http\Controllers\AdminAuth;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+         /* USER ROUTES */
+
 //user register routes
 Route::get('register', [UserController::class, 'register_home']);
 Route::post('register',[UserController::class,'register']);
@@ -29,11 +36,21 @@ Route::post('register',[UserController::class,'register']);
 Route::get('login', [UserController::class, 'login_form']);
 Route::post('login', [UserController::class, 'login']);
 
-//logout routes
+//logout route
 Route::post('logout/{user}', [UserController::class, 'logout']);
 
 //create story routes
 Route::post('add_story', [StoryController::class, 'storeStory']);
+Route::get('story', [StoryController::class, 'getStory']);
+
+        /* USER LIBRARY */
+Route::post('add_to_library/{publishedStory}', [UserLibraryController::class,'addToLibrary']);
+Route::delete('delete_from_library/{story}', [UserLibraryController::class, 'deleteFromLibrary']);
+        /* ADMIN ROUTES */
+Route::get('dashboard', [AdminController::class, 'dashboard']);
+Route::post('publish/{story}', [PublishedStoryController::class, 'storyToPublish']);
+        
+        /* BOTH */
+
 //search routes
-Route::get('search/{title}',[StoryController::class, 'searchStory']);
 Route::get('search/{title}',[SearchController::class,'search']);

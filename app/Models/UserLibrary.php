@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Story extends Model
+class UserLibrary extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,8 @@ class Story extends Model
         'blurb',
         'story_flow',
         // 'image'
-
     ];
 
-    
     protected $casts = [
         'genre'=>'array'
     ];
