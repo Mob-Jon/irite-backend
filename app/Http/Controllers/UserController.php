@@ -12,10 +12,14 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    // Get register form
-    public function register_home()
+    public function index(Type $var = null)
     {
-        //return view file with route register
+        return response()->json(User::all());
+    }
+    // Get register form
+    public function register_form()
+    {
+        
         return response()->json('register form');
     
     }
