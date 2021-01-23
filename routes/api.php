@@ -11,6 +11,10 @@ use App\Http\Controllers\ReviewController;
 // use App\Http\Controllers\CheckAge;
 
 
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminController;
+
+ 
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,3 +49,10 @@ Route::post('review', [ReviewController::class,'store'])->name('story.store');
 // Route::get('/article/{story:slug}', 'StoryController@show')->name('story.show');
 // Route::post('/review/store', 'ReviewController@store')->name('review.add');
 // Route::post('/reply/store', 'ReviewController@replyStore')->name('reply.add');
+Route::post('register',[RegisterController::class,'register']);
+Route::post('adminHome',[AdminController::class,'register_admin']);
+Route::get('search/{title}',[SearchController::class,'search']);
+
+// Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function(){
+//     //All the admin routes will be defined here...
+//   });

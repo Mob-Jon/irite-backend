@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 // use App\Models\Books;
 use App\Models\Story;
 
+
 class HomeController extends Controller
 {
     /**
@@ -92,5 +93,18 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    //  * Create a new controller instance.
+    //  *
+    //  * @return void
+    //  */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
 }
