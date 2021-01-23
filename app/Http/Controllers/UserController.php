@@ -16,6 +16,7 @@ class UserController extends Controller
     public function register_home()
     {
         //return view file with route register
+        return response()->json('register form');
     
     }
 
