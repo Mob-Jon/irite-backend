@@ -50,7 +50,7 @@ class UserController extends Controller
            
         }catch(Exception $e){
             DB::rollBack();
-            return $e;
+            return response()->json($e->getMessage());
         }
     }
 

@@ -16,12 +16,19 @@ class CreateStoriesTable extends Migration
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->unsignedBigInteger('user_id');
             $table->json('genre');
             $table->string('blurb');
             $table->text('story_flow');
-            // $table->binary('image');
+            $table->binary('image');
             $table->timestamps();
+
+            // $table->foreign('user_id')
+            // ->references('id')
+            // ->on('users');
+          
         });
+       
     }
 
     /**
@@ -32,5 +39,6 @@ class CreateStoriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('stories');
+
     }
 }

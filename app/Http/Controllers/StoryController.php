@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Story;
+use App\Models\User;
 
 class StoryController extends Controller
 {
 
-    public function storeStory(Request $request)
+    public function storeStory(Request $request,User $user)
     {
         DB::beginTransaction();
 
@@ -20,16 +21,16 @@ class StoryController extends Controller
                 'genre.*'=>'required',
                 'blurb'=>'required',
                 'storyFlow'=>'required',
-                // 'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                'image.*'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
-            // $imageName = time(). '.'. $request->image->extension();
-            // $request->image->move(public_path('images'), $imageName);
-            $story = Story::create([
+            $imageName = time(). '.'. $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $story = $user->stories()->create([
                 'title'=>$request->title,
                 'genre'=>$request->genre,
                 'blurb'=>$request->blurb,
                 'story_flow'=>$request->storyFlow,
-                // 'image'=>$imageName
+                'image'=>$imageName
             ]);
 
             DB::commit();
