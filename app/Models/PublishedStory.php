@@ -14,7 +14,7 @@ class PublishedStory extends Model
         'genre',
         'blurb',
         'story_flow',
-        // 'image'
+        'user_id'
 
     ];
 

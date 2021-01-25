@@ -18,18 +18,8 @@ class CreateReviewsTable extends Migration
             $table->unsignedBigInteger('story_id');
             $table->text('review');
             $table->integer('rating');
-            
+            $table->timestamps();
 
-        //     $table->foreign('user_id')
-        //     ->references('id')
-        //     ->on('users')
-        //     ->onDelete('cascade');
-
-        // $table->foreign('story_id')
-        //     ->references('id')
-        //     ->on('stories')
-        //     ->onDelete('cascade');
-        //     $table->timestamps();
         });
 
         

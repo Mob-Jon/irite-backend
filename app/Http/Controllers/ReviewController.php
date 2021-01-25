@@ -35,7 +35,9 @@ class ReviewController extends Controller
 
             $review = Review::create($request->all());
             DB::commit();
+
             return response()->json($review);
+
         }catch(\Exception $e) {
             DB::rollback();
             return response()->json(["errors"=> "Unable to create reviews $e"]);

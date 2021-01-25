@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Story;
+use App\Models\PublishedStory;
+
 
 class SearchController extends Controller
 {
     public function search($title)
     {
         // return response()->json($title);
-        return Story::where("title","like","%".$title."%")->get();
+        return PublishedStory::where("title","like","%".$title."%")->get();
 
     }
 
-    public function filter_genre($genre){
+    public function genre($genre){
         
+        return PublishedStory::where("genre","like", "%".$genre."%")->get();
     }
 
 }

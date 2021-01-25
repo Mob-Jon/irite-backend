@@ -8,8 +8,10 @@ use App\Models\PublishedStory;
 
 class AdminController extends Controller
 {
-    public function getStory()
+    public function dashboard()
     {
         return response()->json(PublishedStory::all());
     }
+    
+    
 }

@@ -43,11 +43,12 @@ Route::post('logout/{user}', [UserController::class, 'logout']);
 
 //create story routes
 Route::post('add_story/{user}', [StoryController::class, 'storeStory']);
-Route::get('story', [StoryController::class, 'getStory']);
+// Route::get('story', [StoryController::class, 'getStory']);
 
         /* USER LIBRARY */
 Route::post('add_to_library/{publishedStory}', [UserLibraryController::class,'addToLibrary']);
 Route::delete('delete_from_library/{story}', [UserLibraryController::class, 'deleteFromLibrary']);
+
         /* ADMIN ROUTES */
 Route::get('dashboard', [AdminController::class, 'dashboard']);
 Route::post('publish/{story}', [PublishedStoryController::class, 'storyToPublish']);
@@ -56,6 +57,6 @@ Route::post('publish/{story}', [PublishedStoryController::class, 'storyToPublish
 
 //search routes
 Route::get('search/{title}',[SearchController::class,'search']);
-
+Route::get('search/genre/{genre}', [SearchController::class, 'genre']);
 // review route
 Route::post('review', [ReviewController::class,'store'])->name('story.store');

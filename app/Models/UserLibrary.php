@@ -14,7 +14,7 @@ class UserLibrary extends Model
         'genre',
         'blurb',
         'story_flow',
-        // 'image'
+        'user_id'
     ];
 
     protected $casts = [

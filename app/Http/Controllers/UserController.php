@@ -72,6 +72,7 @@ class UserController extends Controller
         $credentials = $request->only('email','password');
         
         $user = User::where('email', $credentials["email"])->first();
+
         if(!$user || !Hash::check($credentials["password"], $user->password)) {
 
             return [
@@ -87,12 +88,14 @@ class UserController extends Controller
         ];
 
         if ($user->usertype == 'admin') {
-            // return view file for admin (dashbord)
+            
             return response()->json($response);
+
         }
         else{
-            // return view file for normal user
+
             return response()->json($response);
+            
         }
         
                     

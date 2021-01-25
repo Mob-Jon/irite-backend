@@ -18,7 +18,6 @@ class UserLibraryController extends Controller
         $story = $stories->replicate();
         $story->setTable('user_libraries');
         $story->save();
-        $stories->delete();
 
         return response()->json($story);
     }

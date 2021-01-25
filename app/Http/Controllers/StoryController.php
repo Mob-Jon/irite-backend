@@ -30,6 +30,8 @@ class StoryController extends Controller
                 'story_flow'=>$request->storyFlow
             ]);
 
+            // $check = $user->usertype;
+
             DB::commit();
 
             return response()->json($story);

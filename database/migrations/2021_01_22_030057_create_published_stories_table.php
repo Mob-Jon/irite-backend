@@ -16,10 +16,10 @@ class CreatePublishedStoriesTable extends Migration
         Schema::create('published_stories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->unsignedBigInteger('user_id');
             $table->json('genre');
             $table->string('blurb');
             $table->text('story_flow');
-            // $table->binary('image');
             $table->timestamps();
         });
     }
