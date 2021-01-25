@@ -17,8 +17,6 @@ class Story extends Model
         'blurb',
         'story_flow',
         'user_id'
-        // 'image'
-
     ];
 
     protected $casts = [

@@ -20,12 +20,7 @@ class CreateStoriesTable extends Migration
             $table->json('genre');
             $table->string('blurb');
             $table->text('story_flow');
-            $table->binary('image');
             $table->timestamps();
-
-            // $table->foreign('user_id')
-            // ->references('id')
-            // ->on('users');
           
         });
        

@@ -21,16 +21,13 @@ class StoryController extends Controller
                 'genre.*'=>'required',
                 'blurb'=>'required',
                 'storyFlow'=>'required',
-                'image.*'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
-            $imageName = time(). '.'. $request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
+            
             $story = $user->stories()->create([
                 'title'=>$request->title,
                 'genre'=>$request->genre,
                 'blurb'=>$request->blurb,
-                'story_flow'=>$request->storyFlow,
-                'image'=>$imageName
+                'story_flow'=>$request->storyFlow
             ]);
 
             DB::commit();
