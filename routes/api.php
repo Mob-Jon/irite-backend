@@ -50,6 +50,7 @@ Route::post('add_to_library/{publishedStory}', [UserLibraryController::class,'ad
 Route::delete('delete_from_library/{story}', [UserLibraryController::class, 'deleteFromLibrary']);
 
         /* ADMIN ROUTES */
+Route::get('dashboard/by_ratings',[AdminController::class, 'byRating']);
 Route::get('dashboard', [AdminController::class, 'dashboard']);
 Route::post('publish/{story}', [PublishedStoryController::class, 'storyToPublish']);
         
@@ -58,5 +59,7 @@ Route::post('publish/{story}', [PublishedStoryController::class, 'storyToPublish
 //search routes
 Route::get('search/{title}',[SearchController::class,'search']);
 Route::get('search/genre/{genre}', [SearchController::class, 'genre']);
+
 // review route
+Route::get('review', [ReviewController::class, 'getReview']);
 Route::post('review', [ReviewController::class,'store'])->name('story.store');

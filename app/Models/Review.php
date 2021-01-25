@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\PublishedStory;
+use App\Models\User;
+
 class Review extends Model
 {
     use HasFactory;
@@ -18,6 +21,6 @@ class Review extends Model
     
     public function story()
     {
-        return $this->belongsTo(Story::class);
+        return $this->belongsTo(PublishedStory::class);
     }
 }
