@@ -28,4 +28,8 @@ class AdminController extends Controller
         return response()->json(Story::all());
     }
     
+    public function decline_story()
+    {
+        return
+    }
 }

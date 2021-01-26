@@ -28,6 +28,9 @@ use App\Http\Controllers\ReviewController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+        return $request->user();
+});
          /* USER ROUTES */
 
 //user register routes
@@ -40,7 +43,7 @@ Route::get('login', [UserController::class, 'login_form']);
 Route::post('login', [UserController::class, 'login']);
 
 //logout route
-Route::post('logout/{user}', [UserController::class, 'logout']);
+Route::post('logout', [UserController::class, 'logout']);
 
 //create story routes
 Route::post('add_story/{user}', [StoryController::class, 'storeStory']);
@@ -67,3 +70,6 @@ Route::get('search/genre/{genre}', [SearchController::class, 'genre']);
 // review route
 Route::get('review', [ReviewController::class, 'getReview']);
 Route::post('review', [ReviewController::class,'store'])->name('story.store');
+
+//story(temporary_storage for story)
+Route::get('get_story',[StoryController::class, 'getStory']);
