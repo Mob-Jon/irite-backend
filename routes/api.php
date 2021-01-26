@@ -44,6 +44,8 @@ Route::post('logout/{user}', [UserController::class, 'logout']);
 
 //create story routes
 Route::post('add_story/{user}', [StoryController::class, 'storeStory']);
+
+//getallstory
 Route::get('story', [UserHomeController::class, 'getStory']);
 
         /* USER LIBRARY */
