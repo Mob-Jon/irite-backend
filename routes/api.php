@@ -55,6 +55,7 @@ Route::delete('delete_from_library/{story}', [UserLibraryController::class, 'del
         /* ADMIN ROUTES */
 Route::get('dashboard/by_ratings',[AdminController::class, 'byRating']);
 Route::get('dashboard', [AdminController::class, 'dashboard']);
+Route::get('story_to_be_publish', [StoryController::class, 'stories_to_verify']);
 Route::post('publish/{story}', [PublishedStoryController::class, 'storyToPublish']);
         
         /* BOTH */

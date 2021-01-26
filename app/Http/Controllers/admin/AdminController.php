@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PublishedStory;
 use App\Models\Review;
+use App\Models\Story;
 
 class AdminController extends Controller
 {
@@ -13,13 +14,18 @@ class AdminController extends Controller
     {
         return response()->json(PublishedStory::all());
     }
-     public function byRating()
-     {
+
+    public function byRating()
+    {
         $story = PublishedStory::withCount('reviews')->get();
             
 
         return response()->json(['story' => $story]);
-     }
-    
+    }
+
+    public function stories_to_verify()
+    {
+        return response()->json(Story::all());
+    }
     
 }
