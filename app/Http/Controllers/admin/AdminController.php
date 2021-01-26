@@ -18,7 +18,6 @@ class AdminController extends Controller
     public function byRating()
     {
         $story = PublishedStory::withCount('reviews')->get();
-            
 
         return response()->json(['story' => $story]);
     }
@@ -30,6 +29,6 @@ class AdminController extends Controller
     
     public function decline_story()
     {
-        return
+        return response()->json("Sorry,your piece doesn't meet our requirements. Please try again");
     }
 }
