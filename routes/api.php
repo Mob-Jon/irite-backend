@@ -10,6 +10,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\PublishedStoryController;
 use App\Http\Controllers\user\UserLibraryController;
+use App\Http\Controllers\user\UserHomeController;
 use App\Http\Controllers\ReviewController;
 
 
@@ -43,7 +44,7 @@ Route::post('logout/{user}', [UserController::class, 'logout']);
 
 //create story routes
 Route::post('add_story/{user}', [StoryController::class, 'storeStory']);
-// Route::get('story', [StoryController::class, 'getStory']);
+Route::get('story', [UserHomeController::class, 'getStory']);
 
         /* USER LIBRARY */
 Route::post('add_to_library/{publishedStory}', [UserLibraryController::class,'addToLibrary']);

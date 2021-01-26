@@ -21,6 +21,6 @@ class PublishedStoryController extends Controller
         $stories->delete();
 
         return response()->json($story);
-
     }
+
 }
