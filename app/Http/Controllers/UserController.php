@@ -78,7 +78,7 @@ class UserController extends Controller
             return [
                 "This credentials don't match!"
             ];
-        } 
+        }
 
         $token = $user->createToken("access_token")->plainTextToken;
 
