@@ -60,7 +60,8 @@ Route::get('dashboard/by_ratings',[AdminController::class, 'byRating']);
 Route::get('dashboard', [AdminController::class, 'dashboard']);
 Route::get('story_to_be_publish', [StoryController::class, 'getStory']);
 Route::post('publish/{story}', [PublishedStoryController::class, 'storyToPublish']);
-        
+Route::post('decline/{story}', [AdminController::class, 'decline_story']);
+Route::get('declined', [AdminController::class, 'getDeclined']);
         /* BOTH */
 
 //search routes

@@ -7,19 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\User;
 
-class Story extends Model
+class DeclineModel extends Model
 {
-
     use HasFactory;
 
     protected $fillable = [
-        
         'title',
         'genre',
         'blurb',
         'story_flow',
         'user_id'
-        
+
     ];
 
     protected $casts = [
@@ -30,5 +28,4 @@ class Story extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }

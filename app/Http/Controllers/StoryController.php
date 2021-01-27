@@ -34,6 +34,8 @@ class StoryController extends Controller
 
             DB::commit();
 
+            $story = Story::with('user')->find($story);
+
             return response()->json($story);
         }
         catch(Exception $e){

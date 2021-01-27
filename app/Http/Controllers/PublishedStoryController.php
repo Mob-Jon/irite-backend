@@ -17,6 +17,7 @@ class PublishedStoryController extends Controller
         $stories = Story::where('id', $story)->first();
         $story = $stories->replicate();
         $story->setTable('published_stories');
+        $story = Story::with('user')->find($story);
         $story->save();
         $stories->delete();
 

@@ -20,7 +20,6 @@ class PublishedStory extends Model
         'user_id'
 
     ];
-
     
     protected $casts = [
         'genre'=>'array'

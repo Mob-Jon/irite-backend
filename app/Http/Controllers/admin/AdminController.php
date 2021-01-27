@@ -27,8 +27,19 @@ class AdminController extends Controller
         return response()->json(Story::all());
     }
     
-    public function decline_story()
+    public function decline_story($story)
     {
-        return response()->json("Sorry,your piece doesn't meet our requirements. Please try again");
+        $stories = Story::where('id', $story)->first();
+        $story = $stories->replicate();
+        $story->setTable('decline_models');
+        $story->save();
+        $stories->delete();
+
+        return response()->json($story);
+    }
+
+    public function getDeclined(Type $var = null)
+    {
+        # code...
     }
 }
