@@ -19,7 +19,7 @@ class StoryController extends Controller
             $request->validate([
                 'title'=>'required',
                 'genre.*'=>'required',
-                'blurb'=>'required',
+                'blurb'=>'required|max:200',
                 'storyFlow'=>'required',
             ]);
             

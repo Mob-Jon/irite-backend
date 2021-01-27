@@ -26,4 +26,10 @@ class PublishedStoryController extends Controller
         
     }
 
+    public function userPublished($user)
+    {
+        $story = DB::table('published_stories')->where('user_id',$user)->get();
+        return response()->json($story);
+    }
+
 }

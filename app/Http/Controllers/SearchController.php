@@ -10,7 +10,6 @@ class SearchController extends Controller
 {
     public function search($title)
     {
-        // return response()->json($title);
         return PublishedStory::where("title","like","%".$title."%")->get();
 
     }
@@ -18,6 +17,7 @@ class SearchController extends Controller
     public function genre($genre){
         
         return PublishedStory::where("genre","like", "%".$genre."%")->get();
+        
     }
 
 }

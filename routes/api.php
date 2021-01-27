@@ -54,6 +54,7 @@ Route::get('story', [UserHomeController::class, 'getStory']);
         /* USER LIBRARY */
 Route::post('add_to_library/{publishedStory}', [UserLibraryController::class,'addToLibrary']);
 Route::delete('delete_from_library/{story}', [UserLibraryController::class, 'deleteFromLibrary']);
+Route::get('published_story/{user}', [PublishedStoryController::class, 'userPublished']);
 
         /* ADMIN ROUTES */
 Route::get('dashboard/by_ratings',[AdminController::class, 'byRating']);
@@ -62,6 +63,7 @@ Route::get('story_to_be_publish', [StoryController::class, 'getStory']);
 Route::post('publish/{story}', [PublishedStoryController::class, 'storyToPublish']);
 Route::post('decline/{story}', [AdminController::class, 'decline_story']);
 Route::get('declined', [AdminController::class, 'getDeclined']);
+
         /* BOTH */
 
 //search routes
