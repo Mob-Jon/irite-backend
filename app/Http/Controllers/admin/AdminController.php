@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PublishedStory;
 use App\Models\Review;
 use App\Models\Story;
+use App\Models\DeclineModel;
 
 class AdminController extends Controller
 {
@@ -38,8 +39,8 @@ class AdminController extends Controller
         return response()->json($story);
     }
 
-    public function getDeclined(Type $var = null)
+    public function getDeclined()
     {
-        # code...
+        return response()->json(DeclineModel::all());
     }
 }
