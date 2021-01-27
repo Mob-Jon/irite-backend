@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Query\Builder;
 use App\Models\Story;
 use App\Models\PublishedStory;
+use App\Models\User;
 
 class PublishedStoryController extends Controller
 {
@@ -16,12 +17,12 @@ class PublishedStoryController extends Controller
 
         $stories = Story::where('id', $story)->first();
         $story = $stories->replicate();
+        // $story = Story::with('user')->find($story);
         $story->setTable('published_stories');
-        $story = Story::with('user')->find($story);
         $story->save();
         $stories->delete();
 
-        return response()->json($story);
+        return response()->json();
         
     }
 
