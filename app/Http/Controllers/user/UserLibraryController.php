@@ -14,9 +14,9 @@ class UserLibraryController extends Controller
     public function addToLibrary($storyId,$readerId)
     {
 
-        $story = UserLibrary::where('reader_id',$readerId)->first();
+        // $story = UserLibrary::where('reader_id',$readerId)->first()->where('id',$storyId);
 
-        if(!$story){
+        // if(!$story){
             $stories = PublishedStory::where('id', $storyId)->first();
             $story = $stories->replicate();
             $story->setTable('user_libraries');
@@ -25,10 +25,10 @@ class UserLibraryController extends Controller
             
             return response()->json($story);
 
-        }else{
+        // }else{
 
-            return response()->json('existed');
-        }  
+            // return response()->json('existed');
+        // }  
     }
 
     //delete story in library
