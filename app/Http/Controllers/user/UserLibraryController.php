@@ -36,4 +36,9 @@ class UserLibraryController extends Controller
     {
        return response()->json(UserLibrary::where('reader_id',$reader_id)->get());
     }
+
+    public function getallFromLibrary()
+    {
+        return response()->json(UserLibrary::all());
+    }
 }

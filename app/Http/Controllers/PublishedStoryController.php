@@ -31,5 +31,10 @@ class PublishedStoryController extends Controller
         $story = DB::table('published_stories')->where('user_id',$user)->get();
         return response()->json($story);
     }
+    
+    public function deletePublished($user_id)
+    {
+        return response()->json(UserLibrary::where('user_id',$user_id)->get());
+    }
 
 }

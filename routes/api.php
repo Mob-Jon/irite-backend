@@ -55,8 +55,10 @@ Route::get('story', [UserHomeController::class, 'getStory']);
 Route::post('add_to_library/{publishedStory}/{reader_id}', [UserLibraryController::class,'addToLibrary']);
 Route::delete('delete_from_library/{story}', [UserLibraryController::class, 'deleteFromLibrary']);
 Route::get('library/{reader_id}', [UserLibraryController::class, 'getFromLibrary']);
+Route::get('stories_in_library', [UserLibraryController::class, 'getallFromLibrary']);
 // all published story
 Route::get('published_story/{user}', [PublishedStoryController::class, 'userPublished']);
+Route::delete('delete_published/{user_id}', [PublishedStoryController::class, 'deletePublished']);
 
         /* ADMIN ROUTES */
 Route::get('dashboard/by_ratings',[AdminController::class, 'byRating']);
