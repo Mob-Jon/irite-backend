@@ -19,7 +19,7 @@ class ReviewController extends Controller
             $request->validate([
                 // "user_id" => "required",
                 // "published_story_id" => "required",
-                "review" => "required",
+                // "review" => "required",
                 "rating" => "min:1|max:5"
             ]);
                 
@@ -27,7 +27,6 @@ class ReviewController extends Controller
 
                 'user_id'=>$user,
                 'story_id'=>$story,
-                'review'=>$request->review,
                 'rating'=>$request->rating
 
             ]);

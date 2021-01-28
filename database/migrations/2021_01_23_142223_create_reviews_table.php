@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('story_id');
-            $table->text('review')->nullable();
+            // $table->text('review')->nullable();
             $table->integer('rating')->nullable();
             $table->timestamps();
 
