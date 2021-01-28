@@ -32,9 +32,9 @@ class PublishedStoryController extends Controller
         return response()->json($story);
     }
     
-    public function deletePublished($user_id)
+    public function deletePublished($story)
     {
-        return response()->json(PublishedStory::where('story_id',$user_id)->get());
+        return response()->json(PublishedStory::where('id',$story)->get());
     }
 
 }
