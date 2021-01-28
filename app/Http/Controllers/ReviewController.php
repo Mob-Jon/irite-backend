@@ -43,5 +43,13 @@ class ReviewController extends Controller
         
     }
 
-   
+    public function getReview()
+    {
+        return response()->json(Review::all());
+    }
+   public function getReviewByStory($story)
+   {
+       $review = Review::where('story_id',$story)->get()->first();
+       return response()->json($review);
+   }
 }

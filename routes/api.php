@@ -75,7 +75,8 @@ Route::get('search/{title}',[SearchController::class,'search']);
 Route::get('search/genre/{genre}', [SearchController::class, 'genre']);
 
 // review route
-Route::get('review', [ReviewController::class, 'getReview']);
+Route::get('reviews', [ReviewController::class, 'getReview']);
+Route::get('review/{story}', [ReviewController::class, 'getReviewByStory']);
 Route::post('review/{user}/{story}', [ReviewController::class,'store']);
 
 //story(temporary_storage for story)
