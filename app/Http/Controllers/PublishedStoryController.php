@@ -34,7 +34,7 @@ class PublishedStoryController extends Controller
     
     public function deletePublished($story)
     {
-        return response()->json(PublishedStory::where('id',$story)->get());
+        return response()->json(PublishedStory::where('id',$story)->delete());
     }
 
 }
