@@ -11,22 +11,29 @@ class UserLibraryController extends Controller
 {
     
     //add story in library
-    public function addToLibrary($publishedStory)
+    public function addToLibrary($publishedStory,$reader_id)
     {
 
         $stories = PublishedStory::where('id', $publishedStory)->first();
         $story = $stories->replicate();
         $story->setTable('user_libraries');
+        $story->reader_id = $reader_id;
+        // $story->update(['reader_id' => $reader_id]);
         $story->save();
 
         return response()->json($story);
     }
 
     //delete story in library
-    public function deleteFromLibrary(Request $request, UserLibrary $story)
+    public function deleteFromLibrary(UserLibrary $story)
     {
         $deleteStory = $story->delete();
 
         return response()->json($deleteStory);
+    }
+
+    public function getFromLibrary($reader_id)
+    {
+       return response()->json(UserLibrary::where('reader_id',$reader_id)->get());
     }
 }

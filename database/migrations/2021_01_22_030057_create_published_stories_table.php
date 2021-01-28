@@ -17,6 +17,7 @@ class CreatePublishedStoriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('reader_id')->nullable();
             $table->json('genre');
             $table->string('blurb');
             $table->text('story_flow');

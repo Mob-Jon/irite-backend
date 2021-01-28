@@ -22,7 +22,7 @@ class PublishedStoryController extends Controller
         $story->save();
         $stories->delete();
 
-        return response()->json();
+        return response()->json($story);
         
     }
 

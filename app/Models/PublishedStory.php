@@ -33,4 +33,8 @@ class PublishedStory extends Model
     {
         return $this->hasMany(Review::class);
     }
+    public function reader()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
