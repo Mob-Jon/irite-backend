@@ -58,7 +58,7 @@ Route::get('library/{reader_id}', [UserLibraryController::class, 'getFromLibrary
 Route::get('stories_in_library', [UserLibraryController::class, 'getallFromLibrary']);
 // all published story
 Route::get('published_story/{user}', [PublishedStoryController::class, 'userPublished']);
-Route::delete('delete_published/{user_id}', [PublishedStoryController::class, 'deletePublished']);
+Route::delete('delete_published/{story_id}', [PublishedStoryController::class, 'deletePublished']);
 
         /* ADMIN ROUTES */
 Route::get('dashboard/by_ratings',[AdminController::class, 'byRating']);
