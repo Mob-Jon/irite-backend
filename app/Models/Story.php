@@ -18,7 +18,9 @@ class Story extends Model
         'genre',
         'blurb',
         'story_flow',
-        'user_id'
+        'user_id',
+        'review',
+        'rating'
         
     ];
 
@@ -33,6 +35,10 @@ class Story extends Model
     public function reader()
     {
         return $this->belongsTo(User::class);
+    }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 
 }

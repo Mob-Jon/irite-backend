@@ -10,20 +10,28 @@ use Illuminate\Support\Facades\DB;
 
 class ReviewController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request,$user, $story)
     {
         
         DB::beginTransaction();
          
         try {
             $request->validate([
-                "user_id" => "required",
-                "published_story_id" => "required",
+                // "user_id" => "required",
+                // "published_story_id" => "required",
                 "review" => "required",
-                "rating" => "required|min:1|max:5"
+                "rating" => "min:1|max:5"
             ]);
                 
-            $review = Review::create($request->all());
+             $review = Review::create([
+
+                'user_id'=>$user,
+                'story_id'=>$story,
+                'review'=>$request->review,
+                'rating'=>$request->rating
+
+            ]);
+            $review = Review::with('story')->find($story);
             DB::commit();
 
             return response()->json($review);

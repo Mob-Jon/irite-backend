@@ -17,7 +17,9 @@ class PublishedStory extends Model
         'genre',
         'blurb',
         'story_flow',
-        'user_id'
+        'user_id',
+        'reviews',
+        'rating'
 
     ];
     
